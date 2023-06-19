@@ -13,8 +13,8 @@ let currentBox = "inbox";
 let currentPage = 0;
 let totalMessages = 0;
 
-var listElm = document.getElementById('messages');
-var isScrollLoading = false;
+let listElements = document.getElementById('messages');
+let isScrollLoading = false;
 
 syncBtn.onclick = refreshBox;
 logoutBtn.onclick = logout;
@@ -126,13 +126,13 @@ function hideLoading() {
     document.getElementById('scroll-loader').style.display = 'none';
 }
 
-listElm.addEventListener('scroll', function () {
-    if (isScrollLoading == true || listElm.scrollTop == 0 || messages.length >= totalMessages) {
+listElements.addEventListener('scroll', function () {
+    if (isScrollLoading == true || listElements.scrollTop == 0 || messages.length >= totalMessages) {
         return;
     }
 
-    if (listElm.scrollTop + listElm.clientHeight >= listElm.scrollHeight - 10) {
-        listElm.scrollTop = listElm.scrollHeight;
+    if (listElements.scrollTop + listElements.clientHeight >= listElements.scrollHeight - 10) {
+        listElements.scrollTop = listElements.scrollHeight;
 
         currentPage++;
         showLoading();

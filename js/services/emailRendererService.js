@@ -16,12 +16,9 @@ function toShortNameColor(shortName) {
         for (let i = 0; i < shortName.length; i++) {
             sum += shortName.charCodeAt(i);
         }
-
-        return colors[sum % colors.length];
     }
-    else {
-        return colors[0];
-    }
+    
+    return colors[sum % colors.length];
 }
 
 function changeBox(box) {
@@ -55,12 +52,10 @@ function renderEmailList(messages, onEmailClick) {
     }
 
     messages.forEach(obj => {
-
         let msg = new MailMessage(obj);
-
         let seenClass = msg.isSeen() ? 'seen' : 'unseen';
-
         let div = document.createElement("div");
+
         div.classList.add('message', seenClass);
         div.setAttribute('data-uid', msg.uid);
 
@@ -147,7 +142,6 @@ function renderEmailInfo(currentBox, messageObject, onDeleteClick, onSpamClick, 
     let iframe = document.getElementById('iframe-content');
     iframe.srcdoc = msg.html;
     iframe.onload = () => onIframeLoad(msg, iframe);
-
 }
 
 function onIframeLoad(msg) {
@@ -158,7 +152,6 @@ function onIframeLoad(msg) {
     document.getElementById('delete-btn')?.addEventListener('click', () => onDeleteClick(msg.uid));
     document.getElementById('spam-btn')?.addEventListener('click', () => onSpamClick(msg.uid));
     document.getElementById('inbox-btn')?.addEventListener('click', () => onInboxClick(msg.uid));
-
 
     let attachments = document.querySelectorAll('.attachment');
     for (let i = 0; i < attachments.length; i++) {
