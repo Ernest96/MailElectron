@@ -1,7 +1,5 @@
 # MailElectron
 
-![](https://i.postimg.cc/nV2QkNTX/Screenshot-2023-06-19-at-18-47-56.png)
-
 - [x] ✅ Login with Gmail Account
 - [x] ✅ Remember User Credentials
 - [x] ✅ Fetch messages from: INBOX, SENT, SPAM, TRASH
@@ -13,3 +11,6 @@
 - [ ] 🕑 Send Message
 - [ ] 🕑 Send Message with Rich Text
 - [ ] 🕑 Send Attachments
+
+![](https://i.postimg.cc/nV2QkNTX/Screenshot-2023-06-19-at-18-47-56.png)
+![](https://i.postimg.cc/hG0SnRXx/Screenshot-2023-06-19-at-18-48-49.png)
