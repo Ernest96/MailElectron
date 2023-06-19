@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="stylesheet" href="../css/fa.css">
+  <link href="../css/styles.css" rel="stylesheet">
+  <title></title>
+</head>
+
+<body>
+
+  <main>
+    <aside id="actions-menu">
+
+      <!-- <div class="blob-bg1">
+        <img src="./assets/images/blob1.png">
+      </div> -->
+
+      <div id="send-mail-menu">
+        <i id="create-msg" class="fa-solid fa-plus"></i>
+      </div>
+
+      <div class="menu-icon menu-btn active" id="inbox-menu">
+        <i class="fa-solid fa-envelope"></i>
+        <span>Inbox</span>
+      </div>
+
+      <div class="menu-icon menu-btn" id="sent-menu">
+        <i class="fa-solid fa-paper-plane"></i>
+        <span>Sent</span>
+      </div>
+
+      <!-- <div class="menu-icon menu-btn" id="drafts-menu">
+        <i class="fa-solid fa-note-sticky"></i>
+        <span>Drafts</span>
+      </div> -->
+
+      <div class="menu-icon menu-btn" id="spam-menu">
+        <i class="fa-solid fa-ban"></i>
+        <span>Spam</span>
+      </div>
+
+      <div class="menu-icon menu-btn" id="trash-menu">
+        <i class="fa-solid fa-trash"></i>
+        <span>Trash</span>
+      </div>
+
+      <div class="menu-icon" id="logout-btn">
+        <i class="fa-solid fa-right-from-bracket"></i>
+        <span>Log out</span>
+      </div>
+
+    </aside>
+
+    <div class="messages-wrapper">
+
+      <div class="messages-wrapper-top">
+
+        <div id="current-box-text">
+          INBOX
+        </div>
+        <div id="sync-btn">
+          Sync <i id="sync-loading-icon" class="fa-solid fa-rotate "></i>
+        </div>
+
+
+      </div>
+
+
+      <div id="messages">
+
+      </div>
+      <div id="scroll-loader">
+        <svg version="1.1" id="L4" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+          y="0px" viewBox="0 0 100 100" enable-background="new 0 0 0 0" xml:space="preserve">
+          <circle fill="#333333" stroke="none" cx="6" cy="50" r="6">
+            <animate attributeName="opacity" dur="1s" values="0;1;0" repeatCount="indefinite" begin="0.1" />
+          </circle>
+          <circle fill="#333333" stroke="none" cx="26" cy="50" r="6">
+            <animate attributeName="opacity" dur="1s" values="0;1;0" repeatCount="indefinite" begin="0.2" />
+          </circle>
+          <circle fill="#333333" stroke="none" cx="46" cy="50" r="6">
+            <animate attributeName="opacity" dur="1s" values="0;1;0" repeatCount="indefinite" begin="0.3" />
+          </circle>
+        </svg>
+      </div>
+
+    </div>
+
+    <div id="message-content">
+
+    </div>
+
+  </main>
+
+  <script type="module" src="../js/common.js"></script>
+  <script type="module" src="../js/app.js"></script>
+</body>
+
+</html>

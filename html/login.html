@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="../css/fa.css">
+    <link href="../css/login-animation.css" rel="stylesheet">
+    <link href="../css/styles.css" rel="stylesheet">
+    <title>Login - Mailectron</title>
+</head>
+
+<body>
+
+    <main>
+        
+        <div id="login-container">
+            <div class="login-form">
+                <h2 class="centered">Login</h2>
+                <form id="login-form">
+                    <input id="login-email" type="email" placeholder="Email (gmail)" required>
+                    <input id="login-password" type="password" placeholder="App Password" required>
+                    <a class="password-hint" href="https://myaccount.google.com/apppasswords">Create gmail app
+                        password</a>
+                    <input type="button" value="Login" id="login-btn">
+                </form>
+            </div>
+
+            <div class="login-animation">
+                <div class="animation-container">
+                    <div class="bolt">
+                        <svg viewBox="0 0 170 57" class="white left">
+                            <path
+                                d="M36.2701759,17.9733192 C-0.981139498,45.4810755 -7.86361824,57.6618438 15.6227397,54.5156241 C50.8522766,49.7962945 201.109341,31.1461782 161.361488,2">
+                            </path>
+                        </svg>
+                        <svg viewBox="0 0 170 57" class="white right">
+                            <path
+                                d="M36.2701759,17.9733192 C-0.981139498,45.4810755 -7.86361824,57.6618438 15.6227397,54.5156241 C50.8522766,49.7962945 201.109341,31.1461782 161.361488,2">
+                            </path>
+                        </svg>
+                        <div>
+                            <span></span>
+                        </div>
+                        <svg viewBox="0 0 112 44" class="circle">
+                            <path
+                                d="M96.9355003,2 C109.46067,13.4022454 131.614152,42 56.9906735,42 C-17.6328048,42 1.51790702,13.5493875 13.0513641,2">
+                            </path>
+                        </svg>
+                        <svg viewBox="0 0 70 3" class="line left">
+                            <path transform="translate(-2.000000, 0.000000)" d="M2,1.5 L70,1.5"></path>
+                        </svg>
+                        <svg viewBox="0 0 70 3" class="line right">
+                            <path transform="translate(-2.000000, 0.000000)" d="M2,1.5 L70,1.5"></path>
+                        </svg>
+                    </div>
+                </div>
+
+            </div>
+            
+        </div>
+
+    </main>
+
+    <script type="module" src="../js/common.js"></script>
+    <script type="module" src="../js/login/login.js"></script>
+    <script src='../js/animations/tweenmax.min.js'></script>
+    <script src='../js/animations/login-animation.js'></script>
+</body>
+
+</html>

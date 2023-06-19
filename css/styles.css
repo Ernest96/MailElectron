@@ -1,0 +1,519 @@
+@font-face {
+    font-family: 'Ubuntu';
+    src: url('fonts/Ubuntu-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'WixMade';
+    src: url('fonts/WixMadeforText-VariableFont_wght.ttf');
+}
+
+* {
+    box-sizing: border-box;
+}
+
+
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-corner {
+    background: rgba(0, 0, 0, 0);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 16px;
+    border: 2px solid rgba(0, 0, 0, 0);
+    background-clip: content-box;
+}
+
+::-webkit-scrollbar-track {
+    margin: 17px 0px;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+html {
+    height: 100%;
+    font-size: 15px;
+}
+
+body {
+    font-family: 'WixMade';
+    margin: 0;
+    height: 100%;
+
+}
+
+main {
+    display: flex;
+    height: 100%;
+
+    background-color: #ffffff;
+    background-image: radial-gradient(#444df785 0.5px, white 0.5px);
+    background-size: 10px 10px;
+}
+
+p {
+    line-height: 145%;
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: Ubuntu;
+}
+
+
+img {
+    max-width: 100%;
+}
+
+#actions-menu {
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    z-index: 2;
+
+    width: 100px;
+    background-color: rgba(255, 255, 255, 0.561);
+    padding: 10px;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    gap: 40px;
+
+    height: 100%;
+    margin-right: 10px;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+
+    box-shadow: rgba(149, 157, 165, 0.1) 0px 8px 24px;
+    padding-top: 20px;
+
+    overflow: hidden;
+
+}
+
+.menu-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    color: #333333;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.menu-icon:hover,
+.menu-icon.active,
+#sync-btn:hover {
+    color: #467af8 !important;
+}
+
+
+
+.menu-icon i {
+    font-size: 1.4rem;
+}
+
+.menu-icon span {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+}
+
+#logout-btn {
+    margin-top: auto;
+    margin-bottom: 30px;
+}
+
+
+.messages-wrapper {
+    min-width: 220px;
+    width: 320px;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    background-color: white;
+    padding-left: 100px;
+    background: linear-gradient(to right, #f8f9fc, white);
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    overflow: hidden;
+    position: relative;
+    padding-top: 20px;
+}
+
+#message-content {
+    width: calc(100% - 320px);
+    padding: 15px;
+}
+
+#messages {
+    overflow-y: auto;
+    height: 100%;
+    padding-left: 12px;
+    padding-top: 20px;
+    padding-bottom: 50px;
+    border-top: 1px solid lightgray;
+}
+
+
+
+.messages-wrapper-top {
+    display: flex;
+    margin-bottom: 7px;
+    width: 100%;
+    justify-content: space-between;
+    font-size: 0.9rem;
+}
+
+
+#sync-btn {
+    color: #333333;
+    margin-right: 15px;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+#current-box-text {
+    margin-left: 10px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.message-content-header {
+    background-color: white;
+    padding: 15px 20px;
+    border-radius: 15px;
+    box-shadow: rgba(149, 157, 165, 0.1) 0px 8px 24px;
+    display: flex;
+    gap: 15px;
+    position: relative;
+}
+
+.message-content-body {
+    margin-top: 10px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: rgba(149, 157, 165, 0.1) 0px 8px 24px;
+    height: 82vh;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+.message-email-from {
+    font-weight: normal;
+    margin: 0px;
+    opacity: 0.6;
+}
+
+.message-email-date {
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    opacity: 0.7;
+    margin: 0;
+}
+
+.message {
+    padding-right: 8px;
+}
+
+#create-msg {
+    background-color: #467af8;
+    padding: 10px;
+    border-radius: 50%;
+    color: white;
+    font-weight: bolder;
+    font-size: 1.2rem;
+    transition: transform 0.3s;
+}
+
+#send-mail-menu {
+    width: 55px;
+    height: 55px;
+    background-color: #467af855;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+#send-mail-menu:hover #create-msg {
+    transform: scale(1.11);
+}
+
+.blob-bg1 {
+    position: absolute;
+    left: -15px;
+    bottom: -10px;
+    width: 80px;
+}
+
+.blob-bg2 {
+    position: absolute;
+    right: -15px;
+    top: 120px;
+    width: 50px;
+    z-index: -1;
+}
+
+
+.message {
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid lightgray;
+    cursor: pointer;
+    position: relative;
+    transition: border 0.1s, color 0.1s, opacity 0.1s;
+
+}
+
+.message:hover .short-name-icon {
+    border: 2px solid #467af8;
+}
+
+.message:hover,
+.message.active {
+    border-bottom: 1px solid #467af8;
+    color: #2652b6;
+    opacity: 1;
+}
+
+.message-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    position: relative;
+    padding-top: 5px;
+}
+
+.message-header-text {
+    width: calc(100% - 62px);
+}
+
+.message-date {
+    position: absolute;
+    top: -9px;
+    right: 0px;
+    font-size: 0.65rem;
+}
+
+.seen .status-dot {
+    display: none;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #467af8;
+    border-radius: 50%;
+    position: absolute;
+    top: -6px;
+    left: -3px
+}
+
+.message-name,
+.message-subject {
+    margin-top: 0px;
+    margin-bottom: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #1b49b4;
+}
+
+.message.seen .message-name, .message.seen .message-subject {
+    color: unset !important ;
+}
+
+.message-content-subject {
+    margin-top: 0px;
+    margin-bottom: 5px;
+    width: calc(100% - 65px);
+    float: left;
+    padding-top: 6px;
+}
+
+.short-name-icon {
+    width: 40px;
+    height: 40px;
+    background-color: #255190;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+}
+
+.message-content-top {
+    overflow: hidden;
+}
+
+.message-content-text {
+    padding-top: 15px;
+    font-size: 0.9rem;
+    word-break: break-all;
+    width: 100%;
+    height: 90%;
+    border: 0px;
+    padding: 0;
+    margin: 15px 0px 0px 0px;
+    overflow-x:hidden;
+}
+
+
+.message-buttons {
+    display: flex;
+    gap: 8px;
+    float: right;
+    margin-top: 3px;
+}
+
+.message-button {
+    cursor: pointer;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.85rem;
+    transition: filter 0.3s, transform 0.3s;
+}
+
+.message-button:hover {
+    filter: contrast(130%);
+    transform: translateY(-1px);
+}
+
+#delete-btn {
+    background-color: #4c4c4c;
+    color: white;
+}
+
+#reply-btn {
+    background-color: #eb5a65;
+    color: white;
+}
+
+.message-text {
+    margin-top: 5px;
+    max-width: 100%;
+    max-height: 90px;
+
+    word-break: break-all;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    display: -webkit-box;
+
+    font-size: 0.9rem;
+}
+
+.centered {
+    text-align: center;
+}
+
+#login-container {
+    display: flex;
+    justify-content: center;
+
+    align-items: flex-start;
+    width: 100%;
+    margin: 30px 8%;
+    border-radius: 20px;
+    padding: 50px 40px;
+    background: linear-gradient(to bottom right, #ffffff96, #f6f6f6aa);
+    border: 1px solid #e5e5e5;
+}
+
+.login-form {
+    flex: 3;
+    border-radius: 20px;
+    border: 1px solid #e5e5e5;
+    background-color: white;
+    margin-top: 85px;
+}
+
+.login-form form {
+    padding: 10px 30px;
+}
+
+.login-form input[type="email"],
+.login-form input[type="password"],
+.login-form input[type="button"] {
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    outline: none;
+    border: 1px solid lightgray;
+    border-radius: 4px;
+    width: 100%;
+    max-width: 400px;
+    display: block;
+    margin: 0px auto;
+    font-size: 1.05rem;
+    font-family: inherit;
+    padding: 5px;
+    margin-bottom: 20px;
+}
+
+
+
+.password-hint {
+    color: blue !important;
+    font-size: 0.75rem;
+    display: block;
+    width: 100%;
+    max-width: 400px;
+    margin-top: -15px;
+    text-align: right;
+}
+
+#login-btn {
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+#login-btn:hover {
+    opacity: 0.75;
+}
+
+.login-animation {
+    flex: 4;
+}
+
+#scroll-loader {
+    position: fixed;
+    bottom: -22px;
+    left: 115px;
+    display: none;
+    z-index: 2;
+}
+
+#scroll-loader svg{
+    width: 80px;
+    height: 80px;
+    margin-top: 120px;
+  }
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
