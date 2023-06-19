@@ -50,7 +50,7 @@ function onFetchEnd(receivedMessages, boxTotal) {
     messages = receivedMessages;
     totalMessages = boxTotal;
     //console.log(messages);
-    console.log('total = ' + boxTotal);
+    //console.log('total = ' + boxTotal);
 
     hideLoading();
     emailRendererService.renderEmailList(messages, onEmailClick);

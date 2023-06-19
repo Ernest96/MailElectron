@@ -115,7 +115,7 @@ function getBoxMessage(box) {
 
         msgEventEmitter.on('body', function (stream, info) {
             simpleParser(stream, async (err, parsedMessage) => {
-                console.log(parsedMessage);
+                //console.log(parsedMessage);
                 messageBuilder.setText(parsedMessage.text, parsedMessage.html)
                 messageBuilder.setHeaders(parsedMessage.headers);
                 messageBuilder.setMessageId(parsedMessage.messageId);
@@ -140,10 +140,10 @@ function getBoxMessage(box) {
 
                 if (messagesBuildCount == fetchCount) {
                     messages = messages.sort((m1, m2) => {
-                        return m2.date - m1.date;
+                        return m2.uid - m1.uid;
                     });
 
-                    console.log(messages);
+                    //console.log(messages);
                     onFetchEnd(messages, boxTotal);
                 }
             }

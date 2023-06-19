@@ -1,7 +1,6 @@
 const imapService = require("../js/services/imapService");
 const CredentialsManager = require('../js/utils/credentialsManager');
 
-
 const loginBtn = document.getElementById('login-btn');
 const loginForm = document.getElementById('login-form');
 const emailInput = document.getElementById('login-email');

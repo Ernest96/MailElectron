@@ -206,9 +206,12 @@ img {
     padding: 20px;
     border-radius: 15px;
     box-shadow: rgba(149, 157, 165, 0.1) 0px 8px 24px;
-    height: 82vh;
+    height: 83vh;
     overflow-y: hidden;
     overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+
 }
 
 .message-email-from {
@@ -341,7 +344,7 @@ img {
 .message-content-subject {
     margin-top: 0px;
     margin-bottom: 5px;
-    width: calc(100% - 65px);
+    width: calc(100% - 110px);
     float: left;
     padding-top: 6px;
 }
@@ -364,15 +367,13 @@ img {
 }
 
 .message-content-text {
-    padding-top: 15px;
-    font-size: 0.9rem;
     word-break: break-all;
     width: 100%;
-    height: 90%;
     border: 0px;
     padding: 0;
     margin: 15px 0px 0px 0px;
-    overflow-x:hidden;
+    overflow-x: hidden;
+    flex: 1;
 }
 
 .message-buttons {
@@ -523,9 +524,6 @@ img {
     }
 }
 
-.attachments-list {
-    margin-top: 10px;
-}
 
 .attachment {
     width: 130px;
@@ -538,6 +536,6 @@ img {
     color: #333333;
     cursor:pointer;
     display: inline-block;
-    margin: 5px 5px 0px 5px;
+    margin: 10px 5px 0px 5px;
     transition: color 0.2s;
 }

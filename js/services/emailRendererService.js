@@ -4,6 +4,7 @@ const messagesContainer = document.getElementById('messages');
 const messageContentContainer = document.getElementById('message-content');
 const menuIcons = document.querySelectorAll('.menu-icon');
 const currentBoxText = document.getElementById('current-box-text');
+const shell = require('electron').shell;
 
 const colors = ['#9000ff', '#205523', '#ce5515', '#661717', '#181152',
     '#81428b', '#255190', '#22A699', '#F2BE22', '#F29727', '#F24C3D'];
@@ -144,26 +145,34 @@ function renderEmailInfo(currentBox, messageObject, onDeleteClick, onSpamClick, 
     `;
 
     let iframe = document.getElementById('iframe-content');
-
     iframe.srcdoc = msg.html;
-
-    iframe.onload = function () {
-        document.querySelector(`[data-uid="${msg.uid}"]`).classList.toggle('active');
-        document.querySelector(`[data-uid="${msg.uid}"]`).classList.add('seen');
-        document.getElementById('delete-btn')?.addEventListener('click', () => onDeleteClick(msg.uid));
-        document.getElementById('spam-btn')?.addEventListener('click', () => onSpamClick(msg.uid));
-        document.getElementById('inbox-btn')?.addEventListener('click', () => onInboxClick(msg.uid));
-
-        let attachments = document.querySelectorAll('.attachment');
-        for (let i = 0; i < attachments.length; i++) {
-            const attachment = msg.attachments[i];
-            attachments[i].addEventListener('click', () => FileSaver.downloadFile(attachment.filename, attachment.content))
-        }
-    };
-
+    iframe.onload = () => onIframeLoad(msg, iframe);
 
 }
 
+function onIframeLoad(msg) {
+    let iframe = document.getElementById('iframe-content');
+
+    document.querySelector(`[data-uid="${msg.uid}"]`).classList.toggle('active');
+    document.querySelector(`[data-uid="${msg.uid}"]`).classList.add('seen');
+    document.getElementById('delete-btn')?.addEventListener('click', () => onDeleteClick(msg.uid));
+    document.getElementById('spam-btn')?.addEventListener('click', () => onSpamClick(msg.uid));
+    document.getElementById('inbox-btn')?.addEventListener('click', () => onInboxClick(msg.uid));
+
+
+    let attachments = document.querySelectorAll('.attachment');
+    for (let i = 0; i < attachments.length; i++) {
+        const attachment = msg.attachments[i];
+        attachments[i].addEventListener('click', () => FileSaver.downloadFile(attachment.filename, attachment.content))
+    }
+
+    iframe.contentDocument.body.addEventListener('click', function (e) {
+        if (e.target.nodeName.toUpperCase() === 'A' && e.target.href.includes('http')) {
+            e.preventDefault();
+            shell.openExternal(e.target.href);
+        }
+    }, true);
+}
 
 
 module.exports = {
