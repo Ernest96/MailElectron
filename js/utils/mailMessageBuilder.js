@@ -7,7 +7,6 @@ class MailMessageBuilder {
     }
 
     #toShortName(name) {
-
         if (!name) {
             return "";
         }
@@ -69,6 +68,10 @@ class MailMessageBuilder {
                 this.message.threadId = attributes[attr];
             }
         }
+    }
+
+    setAttachments(attachments) {
+        this.message.attachments = attachments;
     }
 }
 

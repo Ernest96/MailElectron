@@ -116,6 +116,7 @@ img {
 
 .menu-icon:hover,
 .menu-icon.active,
+.attachment:hover,
 #sync-btn:hover {
     color: #467af8 !important;
 }
@@ -374,7 +375,6 @@ img {
     overflow-x:hidden;
 }
 
-
 .message-buttons {
     display: flex;
     gap: 8px;
@@ -521,4 +521,23 @@ img {
     100% {
         transform: rotate(360deg);
     }
+}
+
+.attachments-list {
+    margin-top: 10px;
+}
+
+.attachment {
+    width: 130px;
+    padding: 10px;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #333333;
+    cursor:pointer;
+    display: inline-block;
+    margin: 5px 5px 0px 5px;
+    transition: color 0.2s;
 }

@@ -1,4 +1,5 @@
 const MailMessage = require("../models/mailMessage");
+const FileSaver = require("../utils/fileSaver");
 const messagesContainer = document.getElementById('messages');
 const messageContentContainer = document.getElementById('message-content');
 const menuIcons = document.querySelectorAll('.menu-icon');
@@ -97,6 +98,17 @@ function renderEmailInfo(currentBox, messageObject, onDeleteClick, onSpamClick, 
         element.classList.remove('active');
     });
 
+    let attachmentsHtml = '';
+
+    msg.attachments.forEach(atttachment => {
+        attachmentsHtml += `
+        <div class="attachment">
+            <i class="fa-solid fa-file"></i>
+            ${atttachment.filename}
+        </div>
+        `;
+    })
+
     messageContentContainer.innerHTML = `
         <div class="message-content-header">
 
@@ -123,18 +135,36 @@ function renderEmailInfo(currentBox, messageObject, onDeleteClick, onSpamClick, 
                     
                 </div>
             </div>
+            <div class="attachments-list">
+                ${attachmentsHtml}
+            </div>
             <iframe id="iframe-content" class="message-content-text" >
             </iframe>
         </div>
-    `
+    `;
 
-    document.querySelector(`[data-uid="${msg.uid}"]`).classList.toggle('active');
-    document.querySelector(`[data-uid="${msg.uid}"]`).classList.add('seen');
-    document.getElementById('delete-btn')?.addEventListener('click', () => onDeleteClick(msg.uid));
-    document.getElementById('spam-btn')?.addEventListener('click', () => onSpamClick(msg.uid));
-    document.getElementById('inbox-btn')?.addEventListener('click', () => onInboxClick(msg.uid));
-    document.getElementById('iframe-content').srcdoc = msg.html;
+    let iframe = document.getElementById('iframe-content');
+
+    iframe.srcdoc = msg.html;
+
+    iframe.onload = function () {
+        document.querySelector(`[data-uid="${msg.uid}"]`).classList.toggle('active');
+        document.querySelector(`[data-uid="${msg.uid}"]`).classList.add('seen');
+        document.getElementById('delete-btn')?.addEventListener('click', () => onDeleteClick(msg.uid));
+        document.getElementById('spam-btn')?.addEventListener('click', () => onSpamClick(msg.uid));
+        document.getElementById('inbox-btn')?.addEventListener('click', () => onInboxClick(msg.uid));
+
+        let attachments = document.querySelectorAll('.attachment');
+        for (let i = 0; i < attachments.length; i++) {
+            const attachment = msg.attachments[i];
+            attachments[i].addEventListener('click', () => FileSaver.downloadFile(attachment.filename, attachment.content))
+        }
+    };
+
+
 }
+
+
 
 module.exports = {
     renderEmailList,

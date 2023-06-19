@@ -14,6 +14,7 @@ class MailMessage {
       this.text = '';
       this.html = '';
       this.flags = [];
+      this.attachments = [];
       this.threadId = '';
 
       obj && Object.assign(this, obj);

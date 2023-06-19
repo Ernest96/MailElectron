@@ -115,10 +115,11 @@ function getBoxMessage(box) {
 
         msgEventEmitter.on('body', function (stream, info) {
             simpleParser(stream, async (err, parsedMessage) => {
-                //console.log(parsedMessage)
+                console.log(parsedMessage);
                 messageBuilder.setText(parsedMessage.text, parsedMessage.html)
                 messageBuilder.setHeaders(parsedMessage.headers);
                 messageBuilder.setMessageId(parsedMessage.messageId);
+                messageBuilder.setAttachments(parsedMessage.attachments);
                 messageBuildEventEmitter.emit('build');
             });
         });
@@ -142,6 +143,7 @@ function getBoxMessage(box) {
                         return m2.date - m1.date;
                     });
 
+                    console.log(messages);
                     onFetchEnd(messages, boxTotal);
                 }
             }
