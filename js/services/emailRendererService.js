@@ -90,7 +90,7 @@ function renderEmailList(messages, onEmailClick) {
     });
 }
 
-function renderEmailInfo(messageObject, onDeleteClick) {
+function renderEmailInfo(currentBox, messageObject, onDeleteClick, onSpamClick, onInboxClick) {
     let msg = new MailMessage(messageObject);
 
     document.querySelectorAll('.message').forEach(element => {
@@ -117,7 +117,10 @@ function renderEmailInfo(messageObject, onDeleteClick) {
                 <h3 class="message-content-subject">${msg.subject}</h3>
                 <div class="message-buttons">
                     <div class="message-button" title="Reply" id="reply-btn"><i class="fa-solid fa-reply"></i></div>
-                    <div class="message-button" title="Delete" id="delete-btn"><i class="fa-solid fa-trash"></i></div>
+                    ${currentBox == 'spam' ? '' : '<div class="message-button" title="Spam" id="spam-btn"><i class="fa-solid fa-ban"></i></div>'}
+                    ${currentBox == 'inbox' ? '' : '<div class="message-button" title="Move to INBOX" id="inbox-btn"><i class="fa-solid fa-envelope"></i></div>'}
+                    ${currentBox == 'trash' ? '' : '<div class="message-button" title="Delete" id="delete-btn"><i class="fa-solid fa-trash"></i></div>'}
+                    
                 </div>
             </div>
             <iframe id="iframe-content" class="message-content-text" >
@@ -127,9 +130,10 @@ function renderEmailInfo(messageObject, onDeleteClick) {
 
     document.querySelector(`[data-uid="${msg.uid}"]`).classList.toggle('active');
     document.querySelector(`[data-uid="${msg.uid}"]`).classList.add('seen');
-    document.getElementById('delete-btn').addEventListener('click', () => onDeleteClick(msg.uid));
+    document.getElementById('delete-btn')?.addEventListener('click', () => onDeleteClick(msg.uid));
+    document.getElementById('spam-btn')?.addEventListener('click', () => onSpamClick(msg.uid));
+    document.getElementById('inbox-btn')?.addEventListener('click', () => onInboxClick(msg.uid));
     document.getElementById('iframe-content').srcdoc = msg.html;
-
 }
 
 module.exports = {

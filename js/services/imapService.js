@@ -65,6 +65,22 @@ function markAsTrash(uid) {
     })
 }
 
+function markAsSpam(uid) {
+    imap.move(uid, boxesMap["spam"], function(err) {
+        if (err) {
+            imapEventEmitter.emit('error', err);
+        }
+    })
+}
+
+function markAsInbox(uid) {
+    imap.move(uid, boxesMap["inbox"], function(err) {
+        if (err) {
+            imapEventEmitter.emit('error', err);
+        }
+    })
+}
+
 function openBox(err, box) {
     if (err) {
         imapEventEmitter.emit('error', err);
@@ -159,5 +175,8 @@ module.exports = {
     fetchBox,
     markAsSeen,
     markAsTrash,
-    endConnection
+    markAsSpam,
+    markAsInbox,
+    endConnection,
+    markAsInbox
 };

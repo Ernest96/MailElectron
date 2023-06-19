@@ -399,12 +399,17 @@ img {
     transform: translateY(-1px);
 }
 
-#delete-btn {
+#inbox-btn, #delete-btn {
     background-color: #4c4c4c;
     color: white;
 }
 
 #reply-btn {
+    background-color: #3764cf;
+    color: white;
+}
+
+#spam-btn {
     background-color: #eb5a65;
     color: white;
 }

@@ -67,7 +67,7 @@ function onError(error) {
 function onEmailClick(uid) {
     let message = messages.find(msg => msg.uid === uid);
     if (message) {
-        emailRendererService.renderEmailInfo(message, onDeleteClick);
+        emailRendererService.renderEmailInfo(currentBox, message, onDeleteClick, onSpamClick, onInboxClick);
         if (!message.isSeen()) {
             imapService.markAsSeen(message.uid);
         }
@@ -78,6 +78,20 @@ function onDeleteClick(uid) {
     if (confirm("Are you sure you want to delete this message?")) {
         emailRendererService.removeMessageFromList(uid);
         imapService.markAsTrash(uid);
+    }
+}
+
+function onSpamClick(uid) {
+    if (confirm("Are you sure you want to mark this message as SPAM?")) {
+        emailRendererService.removeMessageFromList(uid);
+        imapService.markAsSpam(uid);
+    }
+}
+
+function onInboxClick(uid) {
+    if (confirm("Are you sure you want to move this message to INBOX?")) {
+        emailRendererService.removeMessageFromList(uid);
+        imapService.markAsInbox(uid);
     }
 }
 
@@ -102,7 +116,6 @@ function loadMore() {
 
 function showLoading() {
     isScrollLoading = true;
-
     document.getElementById('scroll-loader').style.display = 'block';
     syncLoadingIcon.classList.add('fa-spin');
 }

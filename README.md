@@ -6,7 +6,7 @@
 - [x] ✅ Show messages Content, support for HTML messages
 - [x] ✅ Lazy loading for messages (pagination on scroll)
 - [x] ✅ Delete message
-- [ ] 🕑 Mark as SPAM
+- [ ] ✅ Mark as SPAM
 - [ ] 🕑 List Attachments
 - [ ] 🕑 Send Message
 - [ ] 🕑 Send Message with Rich Text
