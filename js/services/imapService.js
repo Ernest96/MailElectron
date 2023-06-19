@@ -22,7 +22,7 @@ const imapSettings = {
 
 let imap;
 let currentPage;
-const fetchPerPage = 6;
+const fetchPerPage = 15;
 
 function connect(user, password) {
     endConnection();
@@ -115,7 +115,7 @@ function getBoxMessage(box) {
 
         messageBuildEventEmitter.on('build', function() {
             partCount++;
-            
+
             if (partCount == 2) {
                 messagesBuildCount++;
                 let message = messageBuilder.build();
