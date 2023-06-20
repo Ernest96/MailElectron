@@ -1,7 +1,7 @@
 const Imap = require('imap');
 const { simpleParser } = require('mailparser');
 const MailMessageBuilder = require('../utils/mailMessageBuilder');
-var events = require('events');
+const events = require('events');
 const { EventEmitter } = require('stream');
 const imapEventEmitter = new events.EventEmitter();
 
@@ -84,7 +84,7 @@ function getBoxMessage(box) {
 
     let fetchCount = Math.abs(fetchFrom - fetchTo) + 1;
 
-    var messagesStream = imap.seq.fetch(`${fetchFrom}:${fetchTo}`, { bodies: [''] });
+    let messagesStream = imap.seq.fetch(`${fetchFrom}:${fetchTo}`, { bodies: [''] });
 
     messagesStream.on('message', function (msgEventEmitter) {
         let messageBuilder = new MailMessageBuilder();

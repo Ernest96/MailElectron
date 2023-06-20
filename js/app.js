@@ -25,7 +25,7 @@ function initApp() {
     const { email, password } = credentialsManager.getCredentials();
 
     showLoading();
-    document.title = `${email} - Mailectron`;
+    document.title = `${email} - MailElectron`;
 
     document.querySelectorAll('.menu-btn').forEach(element =>
         element.addEventListener('click', onMenuIconClick));
@@ -49,8 +49,6 @@ function refreshBox() {
 function onFetchEnd(receivedMessages, boxTotal) {
     messages = receivedMessages;
     totalMessages = boxTotal;
-    //console.log(messages);
-    //console.log('total = ' + boxTotal);
 
     hideLoading();
     emailRendererService.renderEmailList(messages, onEmailClick);

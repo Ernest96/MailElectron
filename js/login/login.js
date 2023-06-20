@@ -6,8 +6,9 @@ const loginForm = document.getElementById('login-form');
 const emailInput = document.getElementById('login-email');
 const passwordInput = document.getElementById('login-password');
 
-let imapEventEmitter = imapService.imapEventEmitter;
 const credentialsManager = new CredentialsManager();
+
+let imapEventEmitter = imapService.imapEventEmitter;
 
 loginBtn.onclick = login;
 imapEventEmitter.on('connect', onConnect);
@@ -29,7 +30,6 @@ function login() {
         return;
     }
 
-    //console.log("logging");
     imapService.connect(email, password);
 }
 
