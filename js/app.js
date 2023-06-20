@@ -77,21 +77,21 @@ function onEmailClick(uid) {
 function onDeleteClick(uid) {
     if (confirm("Are you sure you want to delete this message?")) {
         emailRendererService.removeMessageFromList(uid);
-        imapService.markAsTrash(uid);
+        imapService.moveToBox(uid, "trash");
     }
 }
 
 function onSpamClick(uid) {
     if (confirm("Are you sure you want to mark this message as SPAM?")) {
         emailRendererService.removeMessageFromList(uid);
-        imapService.markAsSpam(uid);
+        imapService.moveToBox(uid, "spam");
     }
 }
 
 function onInboxClick(uid) {
     if (confirm("Are you sure you want to move this message to INBOX?")) {
         emailRendererService.removeMessageFromList(uid);
-        imapService.markAsInbox(uid);
+        imapService.moveToBox(uid, "inbox");
     }
 }
 

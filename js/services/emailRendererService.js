@@ -127,10 +127,10 @@ function renderEmailInfo(currentBox, messageObject, onDeleteClick, onSpamClick, 
 
     let iframe = document.getElementById('iframe-content');
     iframe.srcdoc = msg.html;
-    iframe.onload = () => onIframeLoad(msg, iframe);
+    iframe.onload = () => onIframeLoad(msg, onDeleteClick, onSpamClick, onInboxClick);
 }
 
-function onIframeLoad(msg) {
+function onIframeLoad(msg, onDeleteClick, onSpamClick, onInboxClick) {
     let iframe = document.getElementById('iframe-content');
 
     document.querySelector(`[data-uid="${msg.uid}"]`).classList.toggle('active');

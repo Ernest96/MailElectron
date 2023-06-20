@@ -20,9 +20,10 @@ const imapSettings = {
     tlsOptions: { rejectUnauthorized: false }
 };
 
+const fetchPerPage = 15;
+
 let imap;
 let currentPage;
-const fetchPerPage = 15;
 
 function connect(user, password) {
     endConnection();
@@ -43,42 +44,20 @@ function fetchBox(boxKey, page) {
     currentPage = page;
 
     imap.openBox(box, false, openBox);
-
-    // imap.getBoxes(function(err, boxes ) {
-    //     console.log(boxes);
-    // });
 }
 
 function markAsSeen(uid) {
-    imap.addFlags(uid, ['\\Seen'], function (err) {
-        if (err) {
-            imapEventEmitter.emit('error', err);
-        }
-    });
+    imap.addFlags(uid, ['\\Seen'], onMessageMove);
 }
 
-function markAsTrash(uid) {
-    imap.move(uid, boxesMap["trash"], function(err) {
-        if (err) {
-            imapEventEmitter.emit('error', err);
-        }
-    })
+function moveToBox(uid, box) {
+    imap.move(uid, boxesMap[box], onMessageMove)
 }
 
-function markAsSpam(uid) {
-    imap.move(uid, boxesMap["spam"], function(err) {
-        if (err) {
-            imapEventEmitter.emit('error', err);
-        }
-    })
-}
-
-function markAsInbox(uid) {
-    imap.move(uid, boxesMap["inbox"], function(err) {
-        if (err) {
-            imapEventEmitter.emit('error', err);
-        }
-    })
+function onMessageMove(err) {
+    if (err) {
+        imapEventEmitter.emit('error', err);
+    }
 }
 
 function openBox(err, box) {
@@ -86,7 +65,6 @@ function openBox(err, box) {
         imapEventEmitter.emit('error', err);
         return;
     }
-
     getBoxMessage(box);
 }
 
@@ -176,9 +154,6 @@ module.exports = {
     imapEventEmitter,
     fetchBox,
     markAsSeen,
-    markAsTrash,
-    markAsSpam,
-    markAsInbox,
-    endConnection,
-    markAsInbox
+    moveToBox,
+    endConnection
 };
