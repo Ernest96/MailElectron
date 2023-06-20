@@ -1,6 +1,7 @@
 const MailMessage = require("../models/mailMessage");
 const FileSaver = require("../utils/fileSaver");
 const ColorsGenerator = require("../utils/colorsGenerator");
+const Common = require("../common");
 const messagesContainer = document.getElementById('messages');
 const messageContentContainer = document.getElementById('message-content');
 const menuIcons = document.querySelectorAll('.menu-icon');
@@ -145,12 +146,7 @@ function onIframeLoad(msg, onDeleteClick, onSpamClick, onInboxClick) {
         attachments[i].addEventListener('click', () => FileSaver.downloadFile(attachment.filename, attachment.content))
     }
 
-    iframe.contentDocument.body.addEventListener('click', function (e) {
-        if (e.target.nodeName.toUpperCase() === 'A' && e.target.href.includes('http')) {
-            e.preventDefault();
-            shell.openExternal(e.target.href);
-        }
-    }, true);
+    Common.openLinksInExternal(iframe.contentDocument);
 }
 
 module.exports = {
