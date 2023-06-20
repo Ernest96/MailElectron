@@ -31,11 +31,6 @@ app.whenReady().then(() => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow()
   })
 
-  ipcMain.on('show-app', () => {
-    mainWindow.loadFile('./html/app.html') // For testing purposes only
-      .then(() => { window.show(); })
-  });
-
 })
 
 app.on('window-all-closed', function () {
