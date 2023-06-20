@@ -539,3 +539,7 @@ img {
     margin: 10px 5px 0px 5px;
     transition: color 0.2s;
 }
+
+#attachment-link {
+    display: none;
+}

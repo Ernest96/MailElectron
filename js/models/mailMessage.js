@@ -25,5 +25,4 @@ class MailMessage {
     }
 }
 
-
 module.exports = MailMessage;

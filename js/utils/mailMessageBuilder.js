@@ -35,7 +35,6 @@ class MailMessageBuilder {
     }
 
     setHeaders(headers) {
-
         for (let header of headers) {
             let key = header[0];
             let value = header[1];

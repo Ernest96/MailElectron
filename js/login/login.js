@@ -29,13 +29,12 @@ function login() {
         return;
     }
 
-    console.log("logging");
+    //console.log("logging");
     imapService.connect(email, password);
 }
 
 function onConnect(email, password) {
     credentialsManager.setCredentials(email, password);
-
     window.location.href = 'app.html';
 }
 

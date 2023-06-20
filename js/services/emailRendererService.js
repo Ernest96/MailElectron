@@ -1,25 +1,11 @@
 const MailMessage = require("../models/mailMessage");
 const FileSaver = require("../utils/fileSaver");
+const ColorsGenerator = require("../utils/colorsGenerator");
 const messagesContainer = document.getElementById('messages');
 const messageContentContainer = document.getElementById('message-content');
 const menuIcons = document.querySelectorAll('.menu-icon');
 const currentBoxText = document.getElementById('current-box-text');
 const shell = require('electron').shell;
-
-const colors = ['#9000ff', '#205523', '#ce5515', '#661717', '#181152',
-    '#81428b', '#255190', '#22A699', '#F2BE22', '#F29727', '#F24C3D'];
-
-function toShortNameColor(shortName) {
-    let sum = 0;
-
-    if (shortName) {
-        for (let i = 0; i < shortName.length; i++) {
-            sum += shortName.charCodeAt(i);
-        }
-    }
-    
-    return colors[sum % colors.length];
-}
 
 function changeBox(box) {
     messagesContainer.innerHTML = '';
@@ -65,7 +51,7 @@ function renderEmailList(messages, onEmailClick) {
 
                 <div class="message-date">${msg.dateString} </div>
 
-                <div class="short-name-icon" style="background-color:${toShortNameColor(msg.shortName)}">
+                <div class="short-name-icon" style="background-color:${ColorsGenerator.shortNameToColor(msg.shortName)}">
                     ${msg.shortName}
                 </div>
 
@@ -108,7 +94,7 @@ function renderEmailInfo(currentBox, messageObject, onDeleteClick, onSpamClick, 
     messageContentContainer.innerHTML = `
         <div class="message-content-header">
 
-            <div class="short-name-icon" style="background-color:${toShortNameColor(msg.shortName)}">
+            <div class="short-name-icon" style="background-color:${ColorsGenerator.shortNameToColor(msg.shortName)}">
                 ${msg.shortName}
             </div>
 
@@ -166,7 +152,6 @@ function onIframeLoad(msg) {
         }
     }, true);
 }
-
 
 module.exports = {
     renderEmailList,
