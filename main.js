@@ -7,10 +7,10 @@ let mainWindow;
 
 function createWindow() {
   mainWindow = new BrowserWindow({
-    width: 1050,
-    height: 700,
-    minWidth: 1050,
-    minHeight: 700,
+    width: 1100,
+    height: 750,
+    minWidth: 1100,
+    minHeight: 750,
     icon: path.join(__dirname, 'assets/icon.png'),
     webPreferences: {
       nodeIntegration: true,
@@ -21,7 +21,7 @@ function createWindow() {
 
   mainWindow.loadFile('./html/login.html')
 
-  mainWindow.webContents.openDevTools()
+  mainWindow.webContents.openDevTools();
 }
 
 app.whenReady().then(() => {
@@ -36,3 +36,5 @@ app.whenReady().then(() => {
 app.on('window-all-closed', function () {
   app.quit()
 })
+
+

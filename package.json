@@ -24,6 +24,8 @@
     "electron-store": "^8.1.0",
     "emailjs-imap-client": "^3.1.0",
     "imap": "^0.8.19",
-    "mailparser": "^3.6.4"
+    "mailparser": "^3.6.4",
+    "nodemailer": "^6.9.3",
+    "toastify-js": "^1.12.0"
   }
 }

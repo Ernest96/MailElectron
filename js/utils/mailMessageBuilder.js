@@ -6,28 +6,30 @@ class MailMessageBuilder {
         this.message = new MailMessage();
     }
 
-    #toShortName(name) {
-        if (!name) {
-            return "";
+    #toShortName(name, email) {
+        let usedName = name;
+
+        if (!usedName) {
+            usedName = email;
         }
 
         let words = name.split(' ');
         let shortName = words[0][0];
-    
+
         if (words.length > 1) {
             shortName += words[1][0];
         }
-    
+
         return shortName;
     }
 
-    build () {
+    build() {
         return this.message;
     }
 
-    setText(text, html) {
+    setText(text, html, textAsHtml) {
         this.message.text = text;
-        this.message.html = html;
+        this.message.html = html == false ? textAsHtml : html;
     }
 
     setMessageId(messageId) {
@@ -43,11 +45,18 @@ class MailMessageBuilder {
                 let lastIdx = value.text.lastIndexOf('>');
                 let firstIdx = value.text.lastIndexOf('<');
 
-                this.message.fromEmail = value.text.substring(firstIdx + 1, lastIdx);
-                this.message.fromName = value.text ? value.text.substring(0, firstIdx - 1) : "";
-                this.message.shortName = this.#toShortName(this.message.fromName);
+                if (lastIdx != -1 && firstIdx != -1) {
+                    this.message.fromEmail = value.text.substring(firstIdx + 1, lastIdx);
+                    this.message.fromName = value.text ? value.text.substring(0, firstIdx - 1) : "";
+                }
+                else {
+                    this.message.fromEmail = value.text;
+                    this.message.fromName = value.text;
+                }
+
+                this.message.shortName = this.#toShortName(this.message.fromName, this.message.fromEmail);
             }
-            else if (key === 'subject'){
+            else if (key === 'subject') {
                 this.message.subject = value;
             }
             else if (key == 'date') {
@@ -59,7 +68,7 @@ class MailMessageBuilder {
 
     setAttributes(attributes) {
         //console.log(attributes);
-        for(let attr in attributes) {
+        for (let attr in attributes) {
             if (attr === 'uid' || attr === 'flags') {
                 this.message[attr] = attributes[attr];
             }

@@ -200,19 +200,88 @@ img {
     position: relative;
 }
 
-.message-content-body {
+.message-content-body, .send-message-container {
     margin-top: 10px;
     background-color: white;
     padding: 20px;
     border-radius: 15px;
     box-shadow: rgba(149, 157, 165, 0.1) 0px 8px 24px;
-    height: 83vh;
     overflow-y: hidden;
     overflow-x: hidden;
     display: flex;
     flex-direction: column;
-
 }
+
+.message-content-body {
+    height: 83vh;
+}
+
+.send-message-container {
+    height: 92vh;
+}
+
+#send-form {
+    padding: 10px 15px;
+}
+
+.form-row {
+    overflow: auto;
+    margin-bottom: 20px;
+}
+
+.form-row > label {
+    font-weight: bold;
+    color: #414141;
+    display: block;
+    float:left;
+    width: 60px;
+    padding-top: 5px;
+}
+
+.form-row  > input[type="text"], .form-row  > input[type="email"] {
+    display: block;
+    float:left;
+    margin-left: 20px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid lightgray;
+    width: calc(100% - 80px);
+    padding-bottom: 4px;
+    font-size: inherit;
+    font-family: inherit;
+}
+
+.form-row > textarea {
+    margin-top: 5px;
+    width: 100%;
+    border: 1px solid lightgray;
+    border-radius: 3px;
+    height: 60vh;
+    resize: none;
+    outline: none;
+    font-family: inherit;
+    font-size: inherit;
+    padding: 10px;
+}
+
+
+#send-email-btn {
+    float: right;
+    text-transform: uppercase;
+    font-family: inherit;
+    font-size: 0.95rem;
+    background-color: #467af8;
+    color:white;
+    border: 1px solid #6b8ad3;
+    border-radius: 3px;
+    padding: 5px 8px;
+    cursor: pointer;
+}
+
+#send-email-btn:hover {
+    opacity: 0.9;
+}
+
 
 .message-email-from {
     font-weight: normal;
@@ -408,6 +477,7 @@ img {
 #reply-btn {
     background-color: #3764cf;
     color: white;
+    visibility: hidden;
 }
 
 #spam-btn {

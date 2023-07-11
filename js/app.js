@@ -1,5 +1,6 @@
 const imapService = require("../js/services/imapService.js");
 const emailRendererService = require("../js/services/emailRendererService.js");
+const messageSenderService = require("../js/services/messageSenderService.js");
 const CredentialsManager = require('../js/utils/credentialsManager');
 
 const syncBtn = document.getElementById('sync-btn');
@@ -13,7 +14,7 @@ let currentBox = "inbox";
 let currentPage = 0;
 let totalMessages = 0;
 
-let listElements = document.getElementById('messages');
+let messagesList = document.getElementById('messages');
 let isScrollLoading = false;
 
 syncBtn.onclick = refreshBox;
@@ -29,6 +30,8 @@ function initApp() {
 
     document.querySelectorAll('.menu-btn').forEach(element =>
         element.addEventListener('click', onMenuIconClick));
+
+    document.getElementById('send-mail-menu').addEventListener('click', onSendMenuClick);
 
     imapEventEmitter.on('fetchend', onFetchEnd);
     imapEventEmitter.on('connect', onConnect);
@@ -102,6 +105,10 @@ function onMenuIconClick(event) {
     getMessages(box);
 }
 
+function onSendMenuClick(event) {
+    messageSenderService.renderSendForm();
+}
+
 function logout() {
     credentialsManager.clearCredentials();
     window.location.href = "login.html";
@@ -124,13 +131,13 @@ function hideLoading() {
     document.getElementById('scroll-loader').style.display = 'none';
 }
 
-listElements.addEventListener('scroll', function () {
-    if (isScrollLoading == true || listElements.scrollTop == 0 || messages.length >= totalMessages) {
+messagesList.addEventListener('scroll', function () {
+    if (isScrollLoading == true || messagesList.scrollTop == 0 || messages.length >= totalMessages) {
         return;
     }
 
-    if (listElements.scrollTop + listElements.clientHeight >= listElements.scrollHeight - 10) {
-        listElements.scrollTop = listElements.scrollHeight;
+    if (messagesList.scrollTop + messagesList.clientHeight >= messagesList.scrollHeight - 10) {
+        messagesList.scrollTop = messagesList.scrollHeight;
 
         currentPage++;
         showLoading();

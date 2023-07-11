@@ -6,7 +6,6 @@ const messagesContainer = document.getElementById('messages');
 const messageContentContainer = document.getElementById('message-content');
 const menuIcons = document.querySelectorAll('.menu-icon');
 const currentBoxText = document.getElementById('current-box-text');
-const shell = require('electron').shell;
 
 function changeBox(box) {
     messagesContainer.innerHTML = '';
@@ -46,6 +45,7 @@ function renderEmailList(messages, onEmailClick) {
         div.classList.add('message', seenClass);
         div.setAttribute('data-uid', msg.uid);
 
+
         html = `
             <div class="message-header">
                 <div class="status-dot"></div>
@@ -77,6 +77,7 @@ function renderEmailList(messages, onEmailClick) {
 function renderEmailInfo(currentBox, messageObject, onDeleteClick, onSpamClick, onInboxClick) {
     let msg = new MailMessage(messageObject);
 
+    console.log(msg);
     document.querySelectorAll('.message').forEach(element => {
         element.classList.remove('active');
     });
@@ -115,7 +116,6 @@ function renderEmailInfo(currentBox, messageObject, onDeleteClick, onSpamClick, 
                     ${currentBox == 'spam' ? '' : '<div class="message-button" title="Spam" id="spam-btn"><i class="fa-solid fa-ban"></i></div>'}
                     ${currentBox == 'inbox' ? '' : '<div class="message-button" title="Move to INBOX" id="inbox-btn"><i class="fa-solid fa-envelope"></i></div>'}
                     ${currentBox == 'trash' ? '' : '<div class="message-button" title="Delete" id="delete-btn"><i class="fa-solid fa-trash"></i></div>'}
-                    
                 </div>
             </div>
             <div class="attachments-list">
@@ -127,7 +127,7 @@ function renderEmailInfo(currentBox, messageObject, onDeleteClick, onSpamClick, 
     `;
 
     let iframe = document.getElementById('iframe-content');
-    iframe.srcdoc = msg.html;
+    iframe.srcdoc += msg.html;
     iframe.onload = () => onIframeLoad(msg, onDeleteClick, onSpamClick, onInboxClick);
 }
 

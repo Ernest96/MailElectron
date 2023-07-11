@@ -8,7 +8,7 @@
 - [x] ✅ Delete message
 - [x] ✅ Mark as SPAM
 - [x] ✅ List Attachments
-- [ ] 🕑 Send Message
+- [x] ✅ Send Message
 - [ ] 🕑 Send Message with Rich Text
 - [ ] 🕑 Send Attachments
 
