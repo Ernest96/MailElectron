@@ -2,9 +2,7 @@ const Toastify = require('../utils/toaster');
 const smtpService = require('../services/smtpService');
 
 const messageContentContainer = document.getElementById('message-content');
-const ckeditorSelector = 'ckeditor';
 let editor;
-
 
 function renderSendForm() {
   messageContentContainer.innerHTML = `

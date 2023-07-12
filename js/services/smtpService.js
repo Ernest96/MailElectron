@@ -3,7 +3,6 @@ const CredentialsManager = require('../utils/credentialsManager');
 const credentialsManager = new CredentialsManager();
 const host = "smtp.gmail.com";
 
-
 async function sendSmtpMessage(to, subject, textAsHtml) {
     const credentials = credentialsManager.getCredentials();
     const transporter = nodemailer.createTransport({
@@ -28,9 +27,8 @@ async function sendSmtpMessage(to, subject, textAsHtml) {
     }
 
     const response = await transporter.sendMail(message);
-    //console.log(response);
+    console.log(response);
 }
-
 
 module.exports = {
     sendSmtpMessage
