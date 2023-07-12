@@ -28,7 +28,7 @@ async function sendSmtpMessage(to, subject, textAsHtml) {
     }
 
     const response = await transporter.sendMail(message);
-    console.log(response);
+    //console.log(response);
 }
 
 

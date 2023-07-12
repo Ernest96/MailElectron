@@ -52,7 +52,6 @@ async function sendEmail() {
 
   emailForm.reset();
   editor.setData('');
-  debugger;
   await smtpService.sendSmtpMessage(message.to, message.subject, message.textAsHtml);
 
   toastSettings.text = "Message was sent";

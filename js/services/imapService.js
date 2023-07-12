@@ -93,7 +93,7 @@ function getBoxMessage(box) {
 
         msgEventEmitter.on('body', function (stream, info) {
             simpleParser(stream, async (err, parsedMessage) => {
-                console.log(parsedMessage);
+                //console.log(parsedMessage);
                 messageBuilder.setText(parsedMessage.text, parsedMessage.html, parsedMessage.textAsHtml)
                 messageBuilder.setHeaders(parsedMessage.headers);
                 messageBuilder.setMessageId(parsedMessage.messageId);

@@ -77,7 +77,7 @@ function renderEmailList(messages, onEmailClick) {
 function renderEmailInfo(currentBox, messageObject, onDeleteClick, onSpamClick, onInboxClick) {
     let msg = new MailMessage(messageObject);
 
-    console.log(msg);
+    //console.log(msg);
     document.querySelectorAll('.message').forEach(element => {
         element.classList.remove('active');
     });
