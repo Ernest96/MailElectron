@@ -613,3 +613,8 @@ img {
 #attachment-link {
     display: none;
 }
+
+.ck-editor__editable[role="textbox"] {
+    /* editing area */
+    height: 60vh;
+}

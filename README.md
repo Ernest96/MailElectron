@@ -9,7 +9,7 @@
 - [x] ✅ Mark as SPAM
 - [x] ✅ List Attachments
 - [x] ✅ Send Message
-- [ ] 🕑 Send Message with Rich Text
+- [x] ✅ Send Message with Rich Text
 - [ ] 🕑 Send Attachments
 
 ![](https://i.postimg.cc/nV2QkNTX/Screenshot-2023-06-19-at-18-47-56.png)

@@ -4,7 +4,7 @@ const credentialsManager = new CredentialsManager();
 const host = "smtp.gmail.com";
 
 
-async function sendSmtpMessage(to, subject, text) {
+async function sendSmtpMessage(to, subject, textAsHtml) {
     const credentials = credentialsManager.getCredentials();
     const transporter = nodemailer.createTransport({
         host: host,
@@ -23,7 +23,8 @@ async function sendSmtpMessage(to, subject, text) {
         from: credentials.email,
         to: to,
         subject: subject,
-        text: text
+        text: textAsHtml.replace(/<[^>]+>/g, ''),
+        html: textAsHtml
     }
 
     const response = await transporter.sendMail(message);

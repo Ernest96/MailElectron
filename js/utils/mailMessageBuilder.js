@@ -28,8 +28,8 @@ class MailMessageBuilder {
     }
 
     setText(text, html, textAsHtml) {
-        this.message.text = text;
-        this.message.html = html == false ? textAsHtml : html;
+        this.message.text = text || "";
+        this.message.html = html || textAsHtml || "";
     }
 
     setMessageId(messageId) {
